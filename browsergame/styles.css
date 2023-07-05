@@ -1,0 +1,44 @@
+header {
+    background-color: rgba(60, 138, 255, 0.882);
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    color:white;
+}
+
+
+.container {
+    background-color: grey;
+    text-align: center;
+    padding: 10px;;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    color:white;
+}
+
+.buttonContainer {
+    margin-top: 20px;
+text-align: center;
+}
+
+button {
+    text-align: center;
+    display: inline;
+    width: 100px;
+    height: 100px;
+    background-color: azure;
+    margin-right: 20px;
+} 
+.healthbar {
+
+    background-color: green;
+
+}
+
+.healthbar_value {
+
+    
+}
