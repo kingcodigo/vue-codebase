@@ -18,24 +18,24 @@
     </header>
     <div id="game">
       <section id="badguy" class="container">
-        <h2>Bad Guy</h2>
+        <h2>Bad Guy's Health</h2>
         <div class="healthbar">
-          <div class="healthbar_value"></div>
+          <div class="healthbar_value" :style="{width: badGuyHealth +'%'}"></div>
         </div>
       </section>
 
       <section id="player" class="container">
-        <h2>Player</h2>
+        <h2>Player's Health</h2>
         <div class="healthbar">
-          <div class="healthbar_value"></div>
+          <div class="healthbar_value" :style="{width: playerHealth +'%'}"></div>
         </div>
       </section>
 
     <div class="buttonContainer">
       <button @click="attackBadGuy">Attack</button>
-      <button>Special Attack</button>
-      <button>Heal</button>
-      <button>Surrender</button>
+      <button :disabled="round%5 !==0" @click="specialAttackBadGuy">Special Attack</button>
+      <button @click="heal">Heal</button>
+      <button @click="surrender">Surrender</button>
     </div>
 
     </div>
