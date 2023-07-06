@@ -13,6 +13,13 @@ body {
 
 }
 
+ul {
+    list-style-type: none;
+    line-height: 30px;
+}
+li {
+    
+}
 
 .container {
     background-color: rgb(239, 246, 252);
@@ -77,4 +84,29 @@ border-radius: 20px;
 border-width: 5px;
 
 
+}
+
+
+.winnerMessage {
+    text-align: center;
+    padding: 30px;
+    background-color:rgb(239, 246, 252);
+    border-radius: 20px;
+    color: rgb(88, 0, 126);;
+}
+
+
+.log--player {
+    color:blue;
+}
+
+.log--badGuy {
+    color:orange;
+}
+
+.log--damage {
+    color:red;
+}
+.log--heal {
+    color:green;
 }

@@ -38,6 +38,33 @@
       <button @click="surrender">Surrender</button>
     </div>
 
+    <div v-if="playerHealth===0 || badGuyHealth===0 && winner==''" class="winnerMessage"
+    >
+      <h2>{{ winner }} wins the game</h2>
+      <button @click="startGame">Start a new round</button>
+    </div>
+   
+    <section id="log" class="container" v-if="round>1">
+      <h2>Battle Log</h2>
+      <ul>
+        <li v-for="logMessage in logMessages">
+         
+         <span :class="{'log--player': logMessage.actionBy==='player', 'log--badGuy' :  logMessage.actionBy==='badguy'}">{{logMessage.actionBy === 'player' ? 'Player' : 'BadGuy'}}</span>
+         <span v-if="logMessage.actionType==='heal'"> heals himself
+          <span class="log--heal">{{ logMessage.actionValue}}</span>
+         </span>
+         <span v-else-if="logMessage.actionType==='special attack'"> special attacked <span class="log--damage">{{ logMessage.actionValue}}</span></span>
+
+         <span v-else> attacks <span class="log--damage">{{ logMessage.actionValue}}</span></span>
+         
+        </li>
+      </ul>
+
+
+    </section>
+
+
+
     </div>
   </body>
 </html>
