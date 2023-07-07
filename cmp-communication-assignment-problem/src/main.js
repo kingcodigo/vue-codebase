@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 
-
 createApp({}).mount('#app')
 
 // Task 1: 
