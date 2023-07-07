@@ -1,6 +1,15 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import UserData from './components/UserData.vue';
+import ActiveUser from './components/ActiveUser.vue';
 
-createApp({}).mount('#app')
+
+const app = createApp(App);
+
+app.component('user-data',UserData);
+app.component('active-user',ActiveUser);
+
+app.mount('#app');
 
 // Task 1: 
 // Add two components to the app: 
