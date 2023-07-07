@@ -15,7 +15,7 @@ export default {
       topics: [
         {
           id: 'basics',
-          title: 'The Basics',
+          title: 'The Basicssss',
           description: 'Core Vue basics you have to know',
           fullText:
             'Vue is a great framework and it has a couple of key concepts: Data binding, events, components and reactivity - that should tell you something!',
@@ -27,7 +27,7 @@ export default {
             'Components are a core concept for building Vue UIs and apps',
           fullText:
             'With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.',
-        },
+        }
       ],
       activeTopic: null,
     };
@@ -37,6 +37,21 @@ export default {
       this.activeTopic = this.topics.find((topic) => topic.id === topicId);
     },
   },
+  provide() {
+    //makes topics array available for child components
+   return {topics : this.topics}
+  },
+  mounted() {
+    setTimeout(() => {
+      this.topics.push({
+        id:'test',
+        title:'Events',
+        description: 'Events are important',
+        fullText: 'learn everything you need to know about events'
+
+      });
+    },3000);
+  }
 };
 </script>
 
