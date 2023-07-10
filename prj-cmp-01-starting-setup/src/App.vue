@@ -1,5 +1,5 @@
 <template>
-    <the-header title="Remember me"></the-header>
+    <the-header title="Knowlegde Base"></the-header>
     <the-resources></the-resources>
 </template>
 
