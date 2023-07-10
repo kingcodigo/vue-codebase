@@ -1,4 +1,8 @@
 <template>
-<h2>Add resource</h2>
+<base-card>
+<form>
+     
+</form>
+</base-card>
 
 </template>
