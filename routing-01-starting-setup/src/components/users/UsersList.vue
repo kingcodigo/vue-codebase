@@ -18,6 +18,10 @@ export default {
       this.$router.push('/teams');
     }
   },
+  beforeRouteLeave(to,from,next) {
+    const userWantsToLeave = confirm('Are you sure you want to leave?');
+   next(userWantsToLeave); 
+  }
 };
 
 </script>
