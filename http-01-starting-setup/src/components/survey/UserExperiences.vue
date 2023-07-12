@@ -6,8 +6,9 @@
         <base-button @click="loadExperiences">Load Submitted Experiences</base-button>
       </div>
       <p v-if="isLoading">Loading...</p>
-      <p  v-if="results.length==0">No stored data found</p>
-      <ul v-if="!isLoading && results.length>0">
+      <p  v-else-if="!isLoading && error">{{ error }}</p>
+      <p  v-else-if="results.length==0">No stored data found</p>
+      <ul v-else-if="!isLoading && results.length>0">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -29,12 +30,15 @@ export default {
   data() {
     return {
       results: [],
-      isLoading: false
+      isLoading: false,
+      error: null
     };
   },
   methods: {
     loadExperiences() {
       this.isLoading=true;
+      this.error=null;
+
       fetch('https://dummy-33dd0-default-rtdb.firebaseio.com/surveys.json')
         .then((response) => {
           if (response.ok) {
@@ -43,9 +47,10 @@ export default {
         })
         .then((data) => {
           this.isLoading=false;
-
           const results = [];
           for (const id in data) {
+            console.log(data[id].name);
+
             results.push({
               id: id,
               name: data[id].name,
@@ -53,6 +58,10 @@ export default {
             });
           }
           this.results = results;
+        }).catch((error) => {
+          this.error = error;
+          this.isLoading=false;
+
         });
     },
   },

@@ -1,6 +1,6 @@
 <template>
-  <learning-survey></learning-survey>
-  <user-experiences></user-experiences>
+  <learning-survey @reload-experiences="reloadExperiences"></learning-survey>
+  <user-experiences ref="userExperiences"></user-experiences>
 </template>
 
 <script>
@@ -17,17 +17,17 @@ export default {
       savedSurveyResults: [],
     };
   },
+  */
   methods: {
-    storeSurvey(surveyData) {
-      const surveyResult = {
-        name: surveyData.userName,
-        rating: surveyData.rating,
-        id: new Date().toISOString(),
-      };
-      this.savedSurveyResults.push(surveyResult);
-      console.log(surveyResult);
+    reloadExperiences() {
+      var blabla = this;
+      setTimeout(function(){
+        blabla.$refs.userExperiences.loadExperiences();
+}, 500);
+
+      
     },
-  }, */
+  },
 };
 </script>
 

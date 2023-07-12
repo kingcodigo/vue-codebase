@@ -29,6 +29,9 @@
         <p
           v-if="invalidInput"
         >One or more input fields are invalid. Please check your provided data.</p>
+        <p
+          v-if="error"
+        >Loading failed. Connection problems {{ error }}</p>
         <div>
           <base-button>Submit</base-button>
         </div>
@@ -46,9 +49,10 @@ export default {
       enteredName: '',
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
- /* emits: ['survey-submit'],*/
+  emits: ['reload-experiences'],
   methods: {
     submitSurvey() {
       if (this.enteredName === '' || !this.chosenRating) {
@@ -63,12 +67,20 @@ export default {
       });
 */
 
+      this.error = null;
       fetch('https://dummy-33dd0-default-rtdb.firebaseio.com/surveys.json', {
         method:'POST',
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify({name:this.enteredName,
               rating: this.chosenRating
-        })
+         }),
+      }).then(response => {
+        if(!response.ok) {
+          throw new Error('Could not save data');
+        }
+      }).catch(error => {
+        console.log(error);
+        this.error = error.message;
       });
 
       axios.post('https://dummy-33dd0-default-rtdb.firebaseio.com/axios.json', {
@@ -78,6 +90,8 @@ export default {
 
       this.enteredName = '';
       this.chosenRating = null;
+      this.$emit('reload-experiences');
+
     },
   },
 };
