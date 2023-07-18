@@ -3,7 +3,7 @@ export default {
         return state.coaches;
     },
     hasCoaches(state) {
-        return true;
+        return state.coaches && state.coaches.length >0;
     }
 
 
