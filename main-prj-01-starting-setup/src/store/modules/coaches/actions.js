@@ -2,11 +2,11 @@ export default {
     registerCoach(context,payload) {
         const coach = {
             id: context.rootGetters.userId,            
-            firstName:payload.first,
-            lastName: payload.last,
-            description: payload.desc,
-            hourlyRate: payload.rate,
-            areas: payload.areas
+            firstName:payload.first.val,
+            lastName: payload.last.val,
+            description: payload.desc.val,
+            hourlyRate: payload.rate.val,
+            areas: payload.areas.val
         }
 
         context.commit('registerCoach', coach);
