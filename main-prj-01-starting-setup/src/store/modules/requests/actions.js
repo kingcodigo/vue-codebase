@@ -29,7 +29,7 @@ export default {
       async loadRequests(context) {
         const coachId = context.rootGetters.userId;
         const response = await fetch(
-          `https://dummy-33dd0-default-rtdb.firebaseio.com/requests/${coachId}.jon`
+          `https://dummy-33dd0-default-rtdb.firebaseio.com/requests/${coachId}.json`
         );
         const responseData = await response.json();
         if (!response.ok) {
