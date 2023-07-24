@@ -1,13 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import CoachDetail from './pages/coaches/CoachDetail.vue';
-import CoachesList from './pages/coaches/CoachesList.vue';
-import CoachRegistration from './pages/coaches/CoachRegistration.vue';
-import ContactCoach from './pages/requests/ContactCoach.vue';
+//import CoachDetail from './pages/coaches/CoachDetail.vue';
+//import CoachesList from './pages/coaches/CoachesList.vue';
+//import CoachRegistration from './pages/coaches/CoachRegistration.vue';
+//import ContactCoach from './pages/requests/ContactCoach.vue';
 import RequestsReceived from './pages/requests/RequestsReceived.vue';
 import UserAuth from './pages/auth/UserAuth.vue';
-import store from './store/index.js'
+import store from './store/index.js';
 import NotFound from './pages/NotFound.vue';
 
+const CoachDetail = () => import('./pages/coaches/CoachDetail.vue');
+const CoachesList = () => import('./pages/coaches/CoachesList.vue');
+const CoachRegistration = () => import('./pages/coaches/CoachRegistration.vue');
+const ContactCoach = () => import('./pages/requests/ContactCoach.vue');
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -43,11 +47,10 @@ const router = createRouter({
 // Navigation guards
 
 router.beforeEach(function (to, _, next) {
-  if(to.meta.requieresAuth && !store.getters.isAuthenticated) {
+  if (to.meta.requieresAuth && !store.getters.isAuthenticated) {
     next('/auth');
   } else if (to.meta.requieresUnAuth && store.getters.isAuthenticated) {
     next('/coaches');
-
   } else {
     next();
   }
