@@ -20,20 +20,29 @@
     <button @click="setTemplateRef">setTemplateRef</button>
   </section>
 
+
+  <section class="container">
+   <user-data userName="this is a prop" @change="answerEmit"></user-data>
+  </section>
+
 </template>
 
 <script setup>
-import { ref, reactive, computed,watch } from 'vue';
+import { ref, reactive, computed,watch,provide } from 'vue';
+import userData from './components/UserData.vue';
 
 const userName = ref('Maximilian');
 const age = ref(31);
 const firstName = ref('');
 const lastName = ref('');
+const providedValue = ref('test');
 const templateRef = ref(null);
 const user = reactive({
   name: 'tobi',
   age: 35,
 });
+
+provide('providedValue',providedValue);
 
 function changeData() {
   userName.value = 'Max';
@@ -64,6 +73,10 @@ watch(age,function(newValue,oldValue) {
   console.log("WATCHED" + newValue + ' ' +oldValue);
 }
 );
+
+function answerEmit(payload) {
+  alert(payload);
+}
 
 /* data() {
     return {
