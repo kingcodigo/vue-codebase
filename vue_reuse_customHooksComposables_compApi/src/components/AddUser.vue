@@ -17,7 +17,7 @@ export default {
     UserAlert,
   },
   setup() {
-    const {alertIsVisible, showAlert, hideAlert}= useAlert();
+    const {alertIsVisible, showAlert, hideAlert}= useAlert(true);
     return {
       alertIsVisible,
       showAlert,
