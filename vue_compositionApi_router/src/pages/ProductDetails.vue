@@ -8,14 +8,20 @@
 
 <script setup>
 import { inject,defineProps } from 'vue';
+import { useRoute} from 'vue-router';
 
 const props = defineProps({
   pid: String,
 });
 
+const route = useRoute();
+console.log(route);
+
     const products = inject('products');
     console.log(products)
     const selectedProduct = products.value.find(product => product.id === props.pid );
+
+    // or with route instead of props: const selectedProduct = products.value.find(product => product.id === route.params.pid);
 
 
     alert(selectedProduct.id);
