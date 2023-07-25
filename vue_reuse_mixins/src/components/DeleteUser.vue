@@ -24,6 +24,6 @@ import {ref} from 'vue'
 
 // overwrites the mixin properties
 const alertTitle = ref('Delete User?');
-const alertIsVisible = true;
+const alertIsVisible = false;
 
-</script>
+</script>./UserAlert.vue

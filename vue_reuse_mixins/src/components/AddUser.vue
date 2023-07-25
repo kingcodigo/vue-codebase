@@ -16,4 +16,4 @@ export default {
   components: {UserAlert},
   mixins: [AlertMixin],
 };
-</script>
+</script>./UserAlert.vue
